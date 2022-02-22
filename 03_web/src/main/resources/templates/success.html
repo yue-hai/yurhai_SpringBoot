@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+<h1 th:text="${msg}">哈哈</h1>
+<h2>
+    <!-- th:href="${link}"：将属性 href 的值改为从域对象中获取的名为 link 的值  -->
+    <a href="www.yuehai.com" th:href="${link}">去百度</a> <br/>
+    <!-- th:href="@{link}"：将属性 href 的值改为 link -->
+    <!-- 而因为又在配置文件中配置了项目路径，所以此时 href 的值为：/yuehai/link -->
+    <a href="www.yuehai.com" th:href="@{link}">去百度2</a>
+</h2>
+</body>
+</html>

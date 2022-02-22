@@ -1,0 +1,25 @@
+spring:
+
+  # 改变默认的静态资源路径为资源文件夹下的 yuehai 目录
+  # 这个会导致 Favicon 功能失效
+#  web:
+#    resources:
+#      static-locations:
+#        [classpath:/yuehai]
+
+  # 1、让拦截器放行带 /resources 前缀的请求，以访问静态资源
+  # 2、给静态资源访问添加前缀，想要访问静态资源必须添加此路径才可
+  # 3、不可以配置静态资源的访问前缀。否则导致 index.html不能被默认访问
+#  mvc:
+#    static-path-pattern: /resources/**
+
+  # 开启页面表单的 Rest 功能
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+# 项目路径，该项目所有的请求路径前都要加上这个路径
+server:
+  servlet:
+    context-path: /yuehai

@@ -1,0 +1,40 @@
+# person：Person 类配置绑定的属性前缀
+person:
+  # 键: 值（冒号后面有个空格）
+  userName: zhangsan
+  boss: false
+  birth: 2019/12/12 20:12:33
+  age: 18
+  # Pet 对象，行外写法
+  pet:
+    # Pet 对象里的属性
+    name: tomcat
+    weight: 23.4
+  # 数组、集合，行内写法
+  interests: [篮球,游泳]
+  # 数组、集合，行外写法
+  animal:
+    - jerry
+    - mario
+  # 数组、集合，行外写法
+  score:
+    # 数组、集合的嵌套，行外写法
+    english:
+      # 键: 值（冒号后面有个空格）
+      first: 30
+      second: 40
+      third: 50
+    # 数组、集合的嵌套，行内写法
+    math: [131,140,148]
+    # 数组、集合的嵌套，行内写法
+    chinese: {first: 128,second: 136}
+  # 数组、集合，行内写法
+  salarys: [3999,4999.98,5999.99]
+  # 数组、集合，行外写法
+  allPets:
+    # 数组、集合的嵌套，行外写法
+    sick:
+      - {name: tom}
+      - {name: jerry,weight: 47}
+    # 数组、集合的嵌套，行内写法
+    health: [{name: mario,weight: 47}]

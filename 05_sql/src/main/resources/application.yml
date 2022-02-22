@@ -1,0 +1,108 @@
+spring:
+  datasource:
+    # 一定要用双引号引起来
+    # useSSL=false：不进行 SSL 连接
+    url: "jdbc:mysql://152.136.229.92:3306/ssm_crud?useSSL=false"
+    username: "root"
+    password: "000123"
+    # 数据库驱动名
+    driver-class-name: com.mysql.jdbc.Driver
+
+    # 德鲁伊数据源配置
+    druid:
+      #监控SpringBean
+      aop-patterns: "com.atguigu.admin.*"
+      # 底层开启功能，stat（sql监控），wall（防火墙）
+      filters: "stat,wall"
+
+      # StatFilter 监控设置，用于统计监控信息；如SQL监控、URI监控
+      stat-view-servlet:
+        # 开启 StatFilter
+        enabled: true
+        # 设置的监控页的账号密码
+        login-username: "admin"
+        login-password: "000123"
+
+      # filter 过滤器
+      web-stat-filter:
+        # 开启 filter 过滤器
+        enabled: true
+        # 过滤的请求
+        url-pattern: "/*"
+        # 排除的请求
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+
+      # 进行具体的 filters 设置
+      filter:
+        # 进行具体的 stat（sql监控） 设置
+        stat:
+          # 开启 sql监控
+          enabled: true
+          # 开启慢查询
+          log-slow-sql: true
+          # 设置超过多长时间为慢查询（毫秒）
+          slow-sql-millis: 10000
+        # 进行具体的 wall（防火墙） 设置
+        wall:
+          # 开启 wall（防火墙）
+          enabled: true
+          config:
+            # 不允许删除表
+            drop-table-allow: false
+
+  # admin 可视化监控项目配置
+  boot:
+    admin:
+      client:
+        # 将数据汇报给的地址，即 admin 可视化监控项目
+        url: http://localhost:8888
+        instance:
+          # 使用 IP 注册进来
+          prefer-ip: true
+  application:
+    # 本项目名
+    name: 05_sql
+
+
+
+# 配置 MyBatis 规则
+mybatis:
+  # 全局配置文件位置
+  # config-location: "classpath:mybatis/mybatis-config.xml"
+  # sql 映射文件位置
+  mapper-locations: "classpath:mybatis/mapper/*.xml"
+  # 配置 MyBatis 的配置项，一旦使用这个方式，就不能再配置上面的：config-location
+  # 所以也可以不写（创建）全局配置文件，所有全局配置文件的配置都放在configuration配置项中即可
+  configuration:
+    # 是否开启自动驼峰命名规则映射
+    map-underscore-to-camel-case: true
+
+# Actuator 指标监控配置
+management:
+  endpoints:
+    # 不暴露所有端点信息
+    enabled-by-default: true
+    web:
+      exposure:
+        # 以 web 的方式暴露
+        include: '*'
+  # management.endpoint.端点名.xxx ： 对某个端点的具体配置
+  endpoint:
+    # 显示应用程序运行状况信息
+    health:
+      # 显示细节：始终
+      show-details: always
+    # 显示应用程序信息
+    info:
+      enabled: true
+    # 显示应用程序中所有Spring Bean的完整列表
+    beans:
+      enabled: true
+
+
+
+
+#  jdbc:
+#    template:
+#      # 查询超时时间（秒）
+#      query-timeout: 10

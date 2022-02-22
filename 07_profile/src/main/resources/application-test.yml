@@ -1,0 +1,4 @@
+# application-test.yml：测试环境
+person:
+  name: test-月海
+  age: 16

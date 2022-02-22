@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <!-- 引入 springBoot 的父项目，管理依赖版本号 -->
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.3</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.yuehai.sb</groupId>
+    <artifactId>02_springinitailizr</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>02_springinitailizr</name>
+    <description>Demo project for Spring Boot</description>
+    <properties>
+        <!-- 使用的 Java 版本 -->
+        <java.version>1.8</java.version>
+    </properties>
+    <!-- 自动引入的依赖（场景） -->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- 配置提示，使自定义的类和配置文件绑定显示提示 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- 引入 Lombok 依赖，简化开发 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+    </dependencies>
+
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <!-- SpringBoot 打为 jar 包，部署项目所需 -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+
+                <configuration>
+                    <excludes>
+                        <!-- 此配置表示项目打包时不将配置提示依赖打包到 jar 包中，节省空间 -->
+                        <exclude>
+                            <groupId>org.springframework.boot</groupId>
+                            <artifactId>spring-boot-configuration-processor</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,4 @@
+# application-prod.yml：生产环境
+person:
+  name: prod-言
+  age: 14
